@@ -26,21 +26,39 @@ public class GameView {
     // Print Game Board
     public void printGameBoard(GameCell[][] gameBoard) {
         System.out.println("\n~ Game Board Display ~ ");
-        StringBuilder topBottomBoundary = new StringBuilder("");
 
+        // Create the Top, Bottom, & Mid-Boundary
+        StringBuilder topBottomBoundary = new StringBuilder("");
         for (int i = 0; i < gameBoard.length; ++i) {
-            topBottomBoundary.append("+----");
+            topBottomBoundary.append("+-----");
         }
         topBottomBoundary.append("+");
 
+        // Set the Position Count
+        int count = 1;
+
+        // Loop through every Row in Game Board
         for (GameCell[] row : gameBoard) {
+
+            // Display the Top and Bottom-Boundaries
             System.out.println(topBottomBoundary);
 
+            // Loop through every Game Cell in Row
             for (GameCell cell : row) {
-                System.out.print("|  " + cell.getChecker() + " ");
+
+                // Display Position Number if no Checker is placed
+                // Else, display the Checker Mark
+                if (cell.getChecker() == null) {
+                    System.out.print("|  " + count + "  ");
+                } else {
+                    System.out.print("|  " + cell.getChecker().toString() + "  ");
+                }
+                count++;
             }
             System.out.println("|");
         }
+
+        // Display the Bottom Boundary
         System.out.println(topBottomBoundary);
         System.out.println();
     }
@@ -73,7 +91,7 @@ public class GameView {
 
             // Get row number from Player
             int boardMaxNum = boardSize * boardSize;
-            System.out.println("Enter Position Number [1-" + boardMaxNum + "]: ");
+            System.out.print("Enter Position Number [1-" + boardMaxNum + "]: ");
             int position = scanner.nextInt();
 
             // Display response from Controller

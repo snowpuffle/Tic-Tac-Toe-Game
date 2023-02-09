@@ -4,6 +4,7 @@ import Model.Checker;
 import Model.GameBoard;
 import Model.Player;
 import Model.PlayerOneChecker;
+import Model.PlayerTwoChecker;
 import Model.PlayerType;
 import View.GameView;
 
@@ -39,7 +40,15 @@ public class GameController {
 
     // 2. Play the Game
     public void playGame() {
-        gameView.printGameBoard(gameBoard.getGameBoard());
+
+        while (true) {
+            gameView.printGameBoard(gameBoard.getGameBoard());
+
+            playTurn();
+
+            
+
+        }
     }
 
     // Play Turn
@@ -53,29 +62,38 @@ public class GameController {
     }
 
     public String playTurnHelper(Player playerTurn, int position) {
-
+        // Check if the position is valid
         boolean isValidPosition = checkValidPosition(position);
         boolean isCheckerPlaced = false;
 
         if (!isValidPosition) {
             return "ERROR: Position is Invalid.";
         } else {
+            // Place Checker based on Player type
             if (playerTurn.getPlayerType() == PlayerType.PLAYER_ONE) {
                 PlayerOneChecker playerOneChecker = new PlayerOneChecker(playerTurn);
                 isCheckerPlaced = placeChecker(playerOneChecker, position);
             } else {
+                PlayerTwoChecker playerTwoChecker = new PlayerTwoChecker(playerTurn);
+                isCheckerPlaced = placeChecker(playerTwoChecker, position);
+            }
 
+            if (isCheckerPlaced) {
+                return "SUCCESS: Checker is Placed.";
+            } else {
+                return "ERROR: Checker Cannot be Placed.";
             }
         }
-
-        return "";
     }
 
+    // Verify Position Number on Game Board
     public boolean checkValidPosition(int position) {
-        if (position < 1 || position > (boardSize * boardSize)) {
+        // Check if Position is Valid
+        if (position > 0 && position <= (boardSize * boardSize)) {
+            return true;
+        } else {
             return false;
         }
-        return true;
     }
 
     public boolean placeChecker(Checker checker, int position) {
