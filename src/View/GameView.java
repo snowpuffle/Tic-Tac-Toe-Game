@@ -25,7 +25,7 @@ public class GameView {
 
     // Print Game Board
     public void printGameBoard(GameCell[][] gameBoard) {
-        System.out.println("\n~ Game Board Display ~ ");
+        System.out.println("\n~ Game Board ~ ");
 
         // Create the Top, Bottom, & Mid-Boundary
         StringBuilder topBottomBoundary = new StringBuilder("");
