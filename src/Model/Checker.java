@@ -2,20 +2,20 @@ package Model;
 
 /* ~ Checker Class: X's and O's ~ */
 public class Checker {
-    private char checkerSign;
+    private Player player;
 
     // Class Constructor
-    public Checker(char checkerSign) {
-        this.checkerSign = checkerSign;
+    public Checker(Player player) {
+        this.player = player;
     }
 
     /* ~ Getter & Setter Methods ~ */
-    public void setCheckerSign(char checkerSign) {
-        this.checkerSign = checkerSign;
+    public Player getPlayer() {
+        return player;
     }
 
-    public char getCheckerSign() {
-        return checkerSign;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
 }

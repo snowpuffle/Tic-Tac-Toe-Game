@@ -3,8 +3,8 @@ package Model;
 /* ~ Player Two Checker Class: Subclass of Checker */
 public class PlayerTwoChecker extends Checker {
 
-    public PlayerTwoChecker(char checkerSign) {
-        super(checkerSign);
+    public PlayerTwoChecker(Player player) {
+        super(player);
     }
 
     public String toString() {

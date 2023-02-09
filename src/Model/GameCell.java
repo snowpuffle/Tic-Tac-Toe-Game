@@ -5,17 +5,16 @@ public class GameCell {
     private Checker checker;
 
     // Class Constructor
-    public GameCell(Checker checker) {
-        this.setChecker(checker);
+    public GameCell() {
+        this.checker = null;
     }
 
     /* ~ Getter & Setter Methods ~ */
+    public Checker getChecker() {
+        return checker;
+    }
+
     public void setChecker(Checker checker) {
         this.checker = checker;
     }
-
-    public char getChecker() {
-        return checker.getCheckerSign();
-    }
-
 }
