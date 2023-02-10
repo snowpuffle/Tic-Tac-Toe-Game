@@ -3,19 +3,15 @@ package Model;
 /* ~ Game Board Class */
 public class GameBoard {
     GameCell[][] gameBoard;
-    int boardSize;
+    private final static int boardSize = 3;     // Board Size must be odd
 
-    public GameBoard(int boardSize) {
-        this.boardSize = boardSize;
-        initializeGameBoard();
-    }
-
-    public void initializeGameBoard() {
+    // Class Constructor; Initialize GameBoard
+    public GameBoard() {
         this.gameBoard = new GameCell[boardSize][boardSize];
 
         // Initialize an empty game board
-        for (int i = 0; i < gameBoard.length; ++i) {
-            for (int j = 0; j < gameBoard[0].length; ++j) {
+        for (int i = 0; i < boardSize; ++i) {
+            for (int j = 0; j < boardSize; ++j) {
                 gameBoard[i][j] = new GameCell();
             }
         }

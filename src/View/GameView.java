@@ -1,13 +1,11 @@
 package View;
 
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 import Controller.GameController;
 import Model.GameBoard;
 import Model.GameCell;
 import Model.Player;
-import Model.PlayerType;
 
 public class GameView {
     Scanner scanner;
@@ -60,7 +58,6 @@ public class GameView {
 
         // Display the Bottom Boundary
         System.out.println(topBottomBoundary);
-        System.out.println();
     }
 
     // Display Game Introduction
@@ -84,23 +81,33 @@ public class GameView {
         return namesOfPlayers;
     }
 
-    // Display Play Turn
-    public void displayPlayTurn(Player playerTurn, int boardSize) {
+    // Display Get Play Turn
+    public int displayGetPlayTurn(Player playerTurn, int boardSize) {
         try {
-            System.out.println("It is " + playerTurn.getPlayerName() + "'s Turn.");
+            System.out.println("~ ~ ~ ~ ~ ~ ~ ~ ~ ~");
+            System.out.print("It is " + playerTurn.getPlayerName() + "'s Turn. ");
 
             // Get row number from Player
             int boardMaxNum = boardSize * boardSize;
             System.out.print("Enter Position Number [1-" + boardMaxNum + "]: ");
             int position = scanner.nextInt();
 
-            // Display response from Controller
-            String response = gameController.playTurnHelper(playerTurn, position);
-            System.out.println(response);
+            return position;
 
         } catch (Exception e) {
             System.out.println("ERROR: Invalid Input.");
         }
+        return -1;
     }
 
+    // Display Play Turn Response
+    public void displayPlayTurnResponse(String response) {
+        System.out.println("ERROR: " + response);
+    }
+
+    // Display Game Result
+    public void displayGameResult(String response) {
+        System.out.println("\n~ End of Game ~");
+        System.out.println(response);
+    }
 }
